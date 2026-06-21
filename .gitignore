@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Backend runtime data
+backend/hr_platform.db
+backend/uploads/
+
+# Frontend build output
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs
+*.log
+
+document.md
+
