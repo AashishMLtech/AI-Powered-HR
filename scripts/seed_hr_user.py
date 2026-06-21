@@ -16,6 +16,10 @@ async def main() -> None:
         repo = UserRepository(db)
         existing = await repo.get_by_email("hr@example.com")
         if existing:
+            existing.full_name = "HR Admin"
+            existing.password_hash = hash_password("password123")
+            await db.commit()
+            await db.refresh(existing)
             print("HR user already exists: hr@example.com")
             return
         await repo.create(
