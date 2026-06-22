@@ -30,8 +30,15 @@ export default function NewJobPage() {
 
   return (
     <main>
+      <div className="toolbar">
+        <div>
+          <span className="eyebrow">New role</span>
+          <h1 className="page-title">Create Job</h1>
+          <p className="subtle">Enter raw HR notes and turn them into a polished posting.</p>
+        </div>
+      </div>
+
       <section className="card">
-        <h1>Create Job</h1>
         <form className="form" onSubmit={submit}>
           <label>Title<input name="title" required /></label>
           <label>Department<input name="department" /></label>

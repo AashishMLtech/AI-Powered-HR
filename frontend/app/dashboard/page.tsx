@@ -14,22 +14,40 @@ export default function DashboardPage() {
 
   return (
     <main>
-      <div className="row">
-        <h1>Jobs</h1>
+      <div className="toolbar">
+        <div>
+          <span className="eyebrow">HR workspace</span>
+          <h1 className="page-title">Jobs</h1>
+          <p className="subtle">Review open roles, status, and candidate activity from one dashboard.</p>
+        </div>
         <Link className="button" href="/dashboard/jobs/new">Create Job</Link>
       </div>
+
       {error && <p className="muted">{error}</p>}
+
       <div className="grid">
+        {jobs.length === 0 && (
+          <div className="empty-state">No jobs yet. Create your first role to start the workflow.</div>
+        )}
         {jobs.map((job) => (
           <section className="card" key={job.id}>
-            <h2>{job.title}</h2>
-            <p className="muted">{job.department || "General"} · {job.location || "Remote"}</p>
-            <span className="badge">{job.status}</span>
+            <div className="job-title">
+              <div>
+                <h2 className="section-title" style={{ marginBottom: 6 }}>{job.title}</h2>
+                <p className="muted">{job.department || "General"} - {job.location || "Remote"}</p>
+              </div>
+              <span className={`badge ${job.status === "published" ? "" : "status-muted"}`}>{job.status}</span>
+            </div>
+            <div className="job-meta">
+              <span className="chip">Review</span>
+              <span className="chip">Assets</span>
+              <span className="chip">Candidates</span>
+            </div>
             <div className="row">
-              <Link href={`/dashboard/jobs/${job.id}`}>Review</Link>
-              <Link href={`/dashboard/jobs/${job.id}/assets`}>Assets</Link>
-              <Link href={`/dashboard/jobs/${job.id}/candidates`}>Candidates</Link>
-              <Link href={`/apply/${job.id}`}>Apply page</Link>
+              <Link className="button secondary" href={`/dashboard/jobs/${job.id}`}>Open</Link>
+              <Link className="button secondary" href={`/dashboard/jobs/${job.id}/assets`}>Assets</Link>
+              <Link className="button secondary" href={`/dashboard/jobs/${job.id}/candidates`}>Candidates</Link>
+              <Link className="button secondary" href={`/apply/${job.id}`}>Public Apply</Link>
             </div>
           </section>
         ))}

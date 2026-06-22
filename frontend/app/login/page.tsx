@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { API_URL } from "../../lib/api";
@@ -33,16 +34,46 @@ export default function LoginPage() {
   }
 
   return (
-    <main>
-      <section className="card">
-        <h1>HR Login</h1>
-        <form className="form" onSubmit={submit}>
-          <label>Email<input name="email" type="email" defaultValue="hr@example.com" required /></label>
-          <label>Password<input name="password" type="password" defaultValue="password123" required /></label>
-          {error && <p className="muted">{error}</p>}
-          <button type="submit">Login</button>
-        </form>
-      </section>
-    </main>
+    <>
+      <header className="topbar">
+        <div className="topbar-inner">
+          <div className="brand">
+            <span className="brand-mark" />
+            <strong>AI HR Platform</strong>
+          </div>
+          <nav className="nav">
+            <Link href="/">Home</Link>
+            <Link href="/dashboard">Dashboard</Link>
+          </nav>
+        </div>
+      </header>
+      <main className="split">
+        <section className="hero-panel">
+          <span className="eyebrow">Secure HR access</span>
+          <h1>Sign in to the hiring dashboard.</h1>
+          <p className="subtle">
+            Use the demo account to review jobs, publish approved roles, and inspect candidate screening results.
+          </p>
+          <div className="hero-card" style={{ marginTop: 20 }}>
+            <div className="job-meta">
+              <span className="chip">Email: hr@example.com</span>
+              <span className="chip">Password: password123</span>
+            </div>
+            <p className="subtle">
+              The interface stays lightweight, but the workflow still feels like a real review system.
+            </p>
+          </div>
+        </section>
+        <section className="card">
+          <h2 className="section-title">HR Login</h2>
+          <form className="form" onSubmit={submit}>
+            <label>Email<input name="email" type="email" defaultValue="hr@example.com" required /></label>
+            <label>Password<input name="password" type="password" defaultValue="password123" required /></label>
+            {error && <p className="muted">{error}</p>}
+            <button type="submit">Login</button>
+          </form>
+        </section>
+      </main>
+    </>
   );
 }
