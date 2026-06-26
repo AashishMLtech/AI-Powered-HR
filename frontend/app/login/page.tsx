@@ -65,7 +65,8 @@ export default function LoginPage() {
           </div>
         </section>
         <section className="card">
-          <h2 className="section-title">HR Login</h2>
+          <span className="eyebrow">Welcome back</span>
+          <h2 className="section-title" style={{ marginTop: 12 }}>HR Login</h2>
           <form className="form" onSubmit={submit}>
             <label>Email<input name="email" type="email" defaultValue="hr@example.com" required /></label>
             <label>Password<input name="password" type="password" defaultValue="password123" required /></label>
