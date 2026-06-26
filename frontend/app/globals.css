@@ -412,7 +412,8 @@ pre {
   padding: 18px;
   border-radius: 16px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(180deg, rgba(14, 25, 44, 0.96), rgba(9, 16, 29, 0.92));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), var(--shadow);
 }
 
 .page-title {
@@ -434,6 +435,19 @@ pre {
 .card p,
 .card li {
   color: #d8e0ee;
+}
+
+.hero-card .eyebrow {
+  background: rgba(57, 217, 138, 0.16);
+  color: #dfffea;
+}
+
+.hero-card .subtle {
+  color: #d6deec;
+}
+
+.hero-card .muted {
+  color: #c3cede;
 }
 
 .toolbar {
