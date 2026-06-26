@@ -19,13 +19,13 @@ export default function AssetsPage({ params }: { params: { jobId: string } }) {
   }, []);
 
   return (
-    <main>
+      <main>
       <h1>Social Assets</h1>
       <div className="grid">
         {assets.map((asset) => (
           <section className="card" key={asset.id}>
             <h2>{asset.platform}</h2>
-            <p>{asset.caption}</p>
+            <p style={{ whiteSpace: "pre-wrap", lineHeight: 1.6 }}>{asset.caption}</p>
             <p className="muted">{asset.groups}</p>
             <button onClick={() => navigator.clipboard.writeText(asset.caption)}>Copy</button>
           </section>

@@ -22,13 +22,40 @@ class MockLLMClient(BaseLLMClient):
         )
 
     async def social_caption(self, platform: str, job_title: str, jd: str) -> str:
-        captions = {
-            "linkedin": f"We are hiring a {job_title}. Join a team that values ownership, clarity, and growth.",
-            "twitter": f"We are hiring: {job_title}. Apply now and grow with a collaborative team.",
-            "facebook": f"New opening for {job_title}. Share this with someone ready for their next role.",
-            "instagram": f"Now hiring: {job_title}. Build, learn, and grow with us.",
+        base_jd = jd.strip()
+        platform_templates = {
+            "linkedin": (
+                f"Now hiring: {job_title}\n\n"
+                "We are looking for a thoughtful professional who brings ownership, clear communication, "
+                "and a strong sense of collaboration.\n\n"
+                "What you will do:\n"
+                f"{base_jd}\n\n"
+                "Why this role stands out:\n"
+                "- Work on meaningful problems with visible business impact.\n"
+                "- Join a team that values learning, accountability, and steady growth.\n"
+                "- Share ideas, improve processes, and help shape how the team works.\n\n"
+                "Best fit for:\n"
+                "Candidates who want a stable, growth-focused environment and enjoy building with purpose."
+            ),
+            "twitter": (
+                f"{job_title} opportunity\n\n"
+                f"{base_jd}\n\n"
+                "Looking for candidates who move fast, communicate clearly, and like solving real problems.\n"
+                "Apply now."
+            ),
+            "facebook": (
+                f"We’re hiring: {job_title}\n\n"
+                f"{base_jd}\n\n"
+                "This is a great fit for candidates looking for a supportive team, practical work, and room to grow.\n"
+                "Please share with anyone who may be interested."
+            ),
+            "instagram": (
+                f"Now hiring: {job_title}\n\n"
+                f"{base_jd}\n\n"
+                "Ideal for creative, motivated candidates who want to learn, contribute, and grow with a team."
+            ),
         }
-        return captions.get(platform, captions["linkedin"])
+        return platform_templates.get(platform, platform_templates["linkedin"])
 
     async def score_cv(self, resume_text: str, job_title: str, jd: str) -> dict:
         score = 65
