@@ -436,6 +436,17 @@ pre {
   color: #d8e0ee;
 }
 
+.hero-card .chip {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.hero-card .subtle,
+.hero-card p,
+.hero-card li {
+  color: #e6ecf6;
+}
+
 .toolbar {
   margin-bottom: 22px;
 }
@@ -468,8 +479,8 @@ pre {
 
 .hero-card {
   padding: 24px;
-  background: rgba(255, 255, 255, 0.86);
-  border: 1px solid rgba(213, 221, 230, 0.95);
+  background: linear-gradient(180deg, rgba(13, 23, 41, 0.98), rgba(8, 14, 26, 0.96));
+  border: 1px solid rgba(177, 193, 220, 0.18);
   border-radius: 18px;
   box-shadow: var(--shadow);
 }
